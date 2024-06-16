@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gestion-courses-deployment
+spec:
+  replicas: 1 # on peut utiliser plusieurs repliques
+  selector:
+    matchLabels:
+      app: gestion-courses
+  template:
+    metadata:
+      labels:
+        app: gestion-courses
+    spec:
+      containers:
+      - name: gestion-courses
+        image: miminovicx/gestion-courses:1.0
+        ports:
+        - containerPort: 3000

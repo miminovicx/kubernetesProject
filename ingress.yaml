@@ -1,0 +1,25 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: gestion-courses-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  rules:
+  - host: gestion-courses.local
+    http:
+      paths:
+      - path: /courses
+        pathType: Prefix
+        backend:
+          service:
+            name: gestion-courses-service
+            port:
+              number: 80
+      - path: /tasks
+        pathType: Prefix
+        backend:
+          service:
+            name: gestion-taches-service
+            port:
+              number: 80

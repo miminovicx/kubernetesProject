@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gestion-taches-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gestion-taches
+  template:
+    metadata:
+      labels:
+        app: gestion-taches
+    spec:
+      containers:
+      - name: gestion-taches
+        image: miminovicx/gestion-taches:1.0
+        ports:
+        - containerPort: 3001
